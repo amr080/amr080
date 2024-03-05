@@ -1,4 +1,4 @@
-const web3 = new Web3('https://mainnet.infura.io/v3/32df86fc7ced4997a2644eb1800a250c');
+const web3 = new Web3('https://sepolia.infura.io/v3/32df86fc7ced4997a2644eb1800a250c');
 
 const contractABI = [[
 	{
@@ -109,21 +109,44 @@ const contractABI = [[
 ]]; 
 
 const contractAddress = '0x4B428Def82Cd18B6D123803153601f0316434902'; 
-const userContract = new web3.eth.Contract(contractABI, contractAddress);
+
+
 async function registerUser() {
     const username = document.getElementById('username').value;
-    if (!username) {
-        alert('Please enter a username.');
+    const dateOfBirth = document.getElementById('dateOfBirth').value;
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    const email = document.getElementById('email').value;
+
+    if (!username || !dateOfBirth || !phoneNumber || !email) {
+        alert('Please fill in all fields.');
         return;
     }
 
     try {
         const accounts = await web3.eth.getAccounts();
-        const sender = accounts[0]; 
-        await userContract.methods.registerUser(username).send({ from: sender });
+        const sender = accounts[0];
 
+        await userContract.methods.registerUser(username, dateOfBirth, phoneNumber, email).send({ from: sender });
         alert(`User ${username} registered successfully!`);
     } catch (error) {
         console.error('Error registering user:', error);
+        alert('Registration failed!');
+    }
+}
+
+async function getUsername() {
+    const walletAddress = document.getElementById('walletAddress').value;
+
+    if (!walletAddress) {
+        alert('Please enter a wallet address.');
+        return;
+    }
+
+    try {
+        const username = await userContract.methods.getUsernameByAddress(walletAddress).call();
+        document.getElementById('retrievedUsername').textContent = `Username: ${username}`;
+    } catch (error) {
+        console.error('Error retrieving username:', error);
+        alert('Failed to retrieve username!');
     }
 }

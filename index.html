@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Registration</title>
+    <title>User Registration DApp</title>
 </head>
 <body>
     <h1>User Registration</h1>
-    <input type="text" id="username" placeholder="Enter your username">
+    <input type="text" id="username" placeholder="Username">
+    <input type="text" id="dateOfBirth" placeholder="Date of Birth (YYYY-MM-DD)">
+    <input type="text" id="phoneNumber" placeholder="Phone Number">
+    <input type="text" id="email" placeholder="Email">
     <button onclick="registerUser()">Register</button>
-    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+
+    <h2>Get Username by Address</h2>
+    <input type="text" id="walletAddress" placeholder="Wallet Address">
+    <button onclick="getUsername()">Get Username</button>
+    <p id="retrievedUsername"></p>
+
     <script src="script.js"></script>
 </body>
 </html>
