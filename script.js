@@ -1,4 +1,3 @@
-// Connect to an Ethereum node (e.g., using Infura)
 const web3 = new Web3('https://mainnet.infura.io/v3/32df86fc7ced4997a2644eb1800a250c');
 
 const contractABI = [[
@@ -124,9 +123,7 @@ async function registerUser() {
 
     try {
         const accounts = await web3.eth.getAccounts();
-        const sender = accounts[0]; // Assuming the user is using the first account
-
-        // Call the registerUser function from your User.sol contract
+        const sender = accounts[0]; 
         await userContract.methods.registerUser(username).send({ from: sender });
 
         alert(`User ${username} registered successfully!`);

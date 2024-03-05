@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "@metamask/detect-provider": "^2.0.0",
+    "alchemy-sdk": "^3.1.2",
+    "dotenv": "^16.4.5",
+    "solc": "^0.8.24",
     "web3": "^4.5.0"
   }
 }
