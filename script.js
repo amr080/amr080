@@ -108,12 +108,8 @@ const contractABI = [[
 	}
 ]]; 
 
-const contractAddress = '0x...'; 
-
-// Instantiate the contract
+const contractAddress = '0x4B428Def82Cd18B6D123803153601f0316434902'; 
 const userContract = new web3.eth.Contract(contractABI, contractAddress);
-
-// Function to register a new user
 async function registerUser() {
     const username = document.getElementById('username').value;
     if (!username) {
