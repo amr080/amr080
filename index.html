@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>User Registration DApp</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
 </head>
 <body>
     <h1>User Registration</h1>
@@ -15,8 +16,10 @@
     <input type="text" id="walletAddress" placeholder="Wallet Address">
     <button onclick="getUsername()">Get Username</button>
     <p id="retrievedUsername"></p>
+
     <button onclick="getContractHistory()">Get Contract History</button>
     <p id="contractHistory"></p>
+
     <script src="script.js"></script>
 </body>
 </html>
