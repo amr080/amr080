@@ -1,5 +1,5 @@
 const web3 = new Web3('https://sepolia.infura.io/v3/32df86fc7ced4997a2644eb1800a250c');
-
+const contractAddress = '0x4B428Def82Cd18B6D123803153601f0316434902'; 
 const contractABI = [[
 	{
 		"anonymous": false,
@@ -108,7 +108,6 @@ const contractABI = [[
 	}
 ]]; 
 
-const contractAddress = '0x4B428Def82Cd18B6D123803153601f0316434902'; 
 
 
 async function registerUser() {
@@ -150,3 +149,32 @@ async function getUsername() {
         alert('Failed to retrieve username!');
     }
 }
+
+
+async function getContractHistory() {
+    try {
+        const events = await userContract.getPastEvents('UserRegistered', {
+            fromBlock: 0,
+            toBlock: 'latest'
+        });
+        
+        let historyHtml = "Users Registered:<br>";
+        events.forEach(event => {
+            historyHtml += `Address: ${event.returnValues.userAddress}, Username: ${event.returnValues.username}<br>`;
+        });
+
+        document.getElementById('contractHistory').innerHTML = historyHtml;
+    } catch (error) {
+        console.error('Error retrieving contract history:', error);
+        alert('Failed to retrieve contract history!');
+    }
+}
+
+
+
+
+
+
+
+
+
