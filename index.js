@@ -1,5 +1,4 @@
 // Detect the MetaMask Ethereum provider
-
 import detectEthereumProvider from '@metamask/detect-provider';
 
 const provider = await detectEthereumProvider();
